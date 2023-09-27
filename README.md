@@ -38,3 +38,5 @@ cd aws-identity-automation-accelerator
 2. Setup AWS Credentials.
 3. Initialize and deploy with Terraform.
 4. Monitor deployments via GitHub Actions.
+
+## GitHub Actions CI/CD
