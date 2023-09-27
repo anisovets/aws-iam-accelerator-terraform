@@ -34,3 +34,7 @@ The AWS Identity Automation Accelerator provides an automated solution for creat
 ```bash
 git clone https://github.com/anisovets/aws-iam-accelerator-terraform.git
 cd aws-identity-automation-accelerator
+
+2. Setup AWS Credentials.
+3. Initialize and deploy with Terraform.
+4. Monitor deployments via GitHub Actions.
