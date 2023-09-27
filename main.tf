@@ -15,9 +15,9 @@ resource "aws_iam_user_policy" "user_permissions" {
     name = "DevServiceUserAccessPolicy"
     user = aws_iam_user.new_user
 
-    policy = jsondecode({
+    policy = jsonencode({
         Version = "2012-10-17",
-        Statament = [
+        Statement = [
             {
                 Effect = "Allow",
                 Action   = [
@@ -39,7 +39,8 @@ resource "aws_iam_user_policy" "user_permissions" {
                     "ecr:SetRepositoryPolicy",
                     "ecr:BatchDeleteImage"
 
-                ]
+                ],
+                Resource = "*"
             }
         ]
     })
