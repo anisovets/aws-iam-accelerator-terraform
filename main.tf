@@ -8,12 +8,12 @@ resource "aws_iam_user" "new_user" {
 }
 
 resource "aws_iam_access_key" "user_access_key" {
-    user = aws_iam_user.new_user
+    user = aws_iam_user.new_user.name
 }
 
 resource "aws_iam_user_policy" "user_permissions" {
     name = "DevServiceUserAccessPolicy"
-    user = aws_iam_user.new_user
+    user = aws_iam_user.new_user.name
 
     policy = jsonencode({
         Version = "2012-10-17",
