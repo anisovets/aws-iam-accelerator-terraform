@@ -19,6 +19,7 @@ jobs:
 
       - name: Terraform Initialize
         run: terraform init
+        run: terraform apply -var-file="constants.tfvars"
 
       - name: Terraform Validate
         run: terraform validate
