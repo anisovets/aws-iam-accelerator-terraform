@@ -19,16 +19,20 @@ jobs:
 
       - name: Terraform Initialize
         run: terraform init
-        
+
+      # Added environment variables for Terraform Plan
       - name: Terraform Plan 
-        run: terraform apply -var-file="constants.tfvars"
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: terraform plan -var-file="constants.tfvars"
 
       - name: Terraform Validate
         run: terraform validate
 
+      # Environment variables are already set for Terraform Apply
       - name: Terraform Apply
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: terraform apply -var-file="constants.tfvars" -auto-approve
-
