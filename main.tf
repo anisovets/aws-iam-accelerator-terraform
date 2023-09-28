@@ -1,5 +1,11 @@
+variable "region" {
+    description = "Teh AWS Region"
+    type = string
+  
+}
+
 provider "aws" {
-    region = "us-east-1"
+    region = var.region
 }
 
 resource "aws_iam_user" "new_user" {
