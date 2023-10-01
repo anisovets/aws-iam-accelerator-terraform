@@ -6,7 +6,7 @@ terraform {
   backend "s3" {
     bucket = "yaru-labs-terraform-state"
     key = "iam-pipeline/terraform.tfstate"
-    region = var.region
+    region = "us-east-1"
     dynamodb_table = "TerraformLocks"
     encrypt = true
     
