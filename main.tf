@@ -1,11 +1,16 @@
-variable "region" {
-    description = "Teh AWS Region"
-    type = string
-  
-}
-
 provider "aws" {
     region = var.region
+}
+
+terraform {
+  backend "s3" {
+    bucket = "yaru-labs-terraform-state"
+    key = "iam-pipeline/terraform.tfstate"
+    region = var.region
+    dynamodb_table = "TerraformLocks"
+    encrypt = true
+    
+  }
 }
 
 resource "aws_iam_user" "new_user" {
