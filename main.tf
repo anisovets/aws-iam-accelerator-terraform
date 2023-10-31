@@ -15,6 +15,10 @@ terraform {
 resource "aws_iam_user" "new_user" {
     name = "dev_service_user"
     path = "/users/"
+
+    lifecycle {
+        ignore_changes = [name]
+    }
 }
 
 resource "aws_iam_access_key" "user_access_key" {
