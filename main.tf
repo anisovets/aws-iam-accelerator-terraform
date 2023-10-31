@@ -9,7 +9,6 @@ terraform {
     region = "us-east-1"
     dynamodb_table = "TerraformLocks"
     encrypt = true
-    
   }
 }
 
