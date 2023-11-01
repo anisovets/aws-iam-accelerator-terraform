@@ -11,7 +11,7 @@ terraform {
     encrypt = true
   }
 }
-
+//DevOps IAM User
 resource "aws_iam_user" "infra_provisioning_user" {
     name = "infra_provisioning_service_user"
     path = "/users/"
@@ -25,6 +25,8 @@ resource "aws_iam_access_key" "user_access_key" {
     user = aws_iam_user.infra_provisioning_user.name
 }
 
+
+// Policy for DevOps User 
 resource "aws_iam_user_policy" "user_permissions" {
     name = "DevServiceUserAccessPolicy"
     user = aws_iam_user.infra_provisioning_user.name
@@ -42,7 +44,8 @@ resource "aws_iam_user_policy" "user_permissions" {
                     "ecs:*",
                     "apigateway:*",
                     "vpc:*",
-                    "cloudformation:*"
+                    "cloudformation:*",
+                    "dynamodb:*"
                 ],
                 Resource = "*"
             }

@@ -1,4 +1,4 @@
-name: Terraform AWS
+name: Create DevOps IAM User
 
 on:
   push:
