@@ -13,8 +13,3 @@ output "iam_user_secret_key" {
   description = "Secret access key of the IAM user. Note: Handle this with care as it is sensitive."
   sensitive   = true  # This marks the output as sensitive, hiding it by default in the CLI.
 }
-
-output "iam_user_policy_arn" {
-  value       = aws_iam_user_policy.user_permissions.arn
-  description = "ARN of the IAM user policy."
-}
