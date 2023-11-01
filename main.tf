@@ -12,22 +12,22 @@ terraform {
   }
 }
 
-resource "aws_iam_user" "new_user" {
-    name = "dev_service_user"
+resource "aws_iam_user" "infra_provisioning_user" {
+    name = "infra_provisioning_service_user"
     path = "/users/"
 
-    lifecycle {
+        lifecycle {
         ignore_changes = [name]
     }
 }
 
 resource "aws_iam_access_key" "user_access_key" {
-    user = aws_iam_user.new_user.name
+    user = aws_iam_user.infra_provisioning_user.name
 }
 
 resource "aws_iam_user_policy" "user_permissions" {
     name = "DevServiceUserAccessPolicy"
-    user = aws_iam_user.new_user.name
+    user = aws_iam_user.infra_provisioning_user.name
 
     policy = jsonencode({
         Version = "2012-10-17",
