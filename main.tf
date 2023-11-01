@@ -35,24 +35,14 @@ resource "aws_iam_user_policy" "user_permissions" {
             {
                 Effect = "Allow",
                 Action   = [
-                    "ecr:GetAuthorizationToken",
-                    "ecr:BatchCheckLayerAvailability",
-                    "ecr:GetDownloadUrlForLayer",
-                    "ecr:GetRepositoryPolicy",
-                    "ecr:DescribeRepositories",
-                    "ecr:ListImages",
-                    "ecr:DescribeImages",
-                    "ecr:BatchGetImage",
-                    "ecr:InitiateLayerUpload",
-                    "ecr:UploadLayerPart",
-                    "ecr:CompleteLayerUpload",
-                    "ecr:PutImage",
-                    "ecr:CreateRepository",
-                    "ecr:DeleteRepository",
-                    "ecr:GetRegistryPolicy",
-                    "ecr:SetRepositoryPolicy",
-                    "ecr:BatchDeleteImage"
-
+                    "ecr:*",
+                    "s3:*",
+                    "s3:*",
+                    "rds:*",
+                    "ecs:*",
+                    "apigateway:*",
+                    "vpc:*",
+                    "cloudformation:*"
                 ],
                 Resource = "*"
             }
