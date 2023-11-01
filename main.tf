@@ -4,7 +4,7 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket = "yaru-labs-terraform-state"
+    bucket = "yaru-labs-terraform-state-bucket"
     key = "iam-pipeline/terraform.tfstate"
     region = "us-east-1"
     dynamodb_table = "TerraformLocks"
