@@ -42,7 +42,7 @@ resource "aws_iam_policy" "terraform_backend_access_policy" {
         Effect = "Allow",
         Action = "s3:ListBucket",
         Resource = "arn:aws:s3:::${var.s3-terraform-state-bucket-name}"
-      },
+      }
   )
 
 }
