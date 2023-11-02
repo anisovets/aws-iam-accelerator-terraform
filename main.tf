@@ -25,6 +25,7 @@ resource "aws_iam_access_key" "user_access_key" {
     user = aws_iam_user.infra_provisioning_user.name
 }
 
+//Terraform Backend Access Policy
 resource "aws_iam_policy" "terraform_backend_access_policy" {
   name = "terraform_backend_access_policy"
   description = ""
