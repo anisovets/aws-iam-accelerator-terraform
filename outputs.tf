@@ -13,3 +13,8 @@ output "iam_user_secret_key" {
   description = "Secret access key of the IAM user. Note: Handle this with care as it is sensitive."
   sensitive   = true  # This marks the output as sensitive, hiding it by default in the CLI.
 }
+
+output "iam_policy_arn" {
+  description = "The ARN of the IAM policy for Terraform backend access"
+  value       = aws_iam_policy.terraform_backend_access_policy.arn
+}

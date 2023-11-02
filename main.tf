@@ -25,6 +25,27 @@ resource "aws_iam_access_key" "user_access_key" {
     user = aws_iam_user.infra_provisioning_user.name
 }
 
+resource "aws_iam_policy" "terraform_backend_access_policy" {
+  name = "terraform_backend_access_policy"
+  description = ""
+
+  policy = jsondecode(
+    {
+        Effect =  "Allow",
+        Action = [
+        "s3:GetObject",
+        "s3:PutObject"
+      ],
+      "Resource": "arn:aws:s3:::${var.s3-terraform-state-bucket-name}/*"
+      },
+      {
+        Effect = "Allow",
+        Action = "s3:ListBucket",
+        Resource = "arn:aws:s3:::${var.s3-terraform-state-bucket-name}"
+      },
+  )
+
+}
 
 // Policy for DevOps User 
 resource "aws_iam_user_policy" "user_permissions" {
