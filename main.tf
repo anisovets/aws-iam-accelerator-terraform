@@ -47,6 +47,7 @@ resource "aws_iam_policy" "terraform_backend_access_policy" {
       }
     ]
 })
+}
 
 // Policy for DevOps User 
 resource "aws_iam_user_policy" "user_permissions" {
