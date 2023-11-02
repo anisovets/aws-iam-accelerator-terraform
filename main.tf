@@ -29,23 +29,24 @@ resource "aws_iam_policy" "terraform_backend_access_policy" {
   name = "terraform_backend_access_policy"
   description = ""
 
-  policy = jsonencode(
-    {
-        Effect =  "Allow",
-        Action = [
-        "s3:GetObject",
-        "s3:PutObject"
-      ],
-      "Resource": "arn:aws:s3:::${var.s3-terraform-state-bucket-name}/*"
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Effect   = "Allow",
+        Action   = [
+          "s3:GetObject",
+          "s3:PutObject"
+        ],
+        Resource = "arn:aws:s3:::${var.s3_terraform_state_bucket_name}/*"
       },
       {
-        Effect = "Allow",
-        Action = "s3:ListBucket",
-        Resource = "arn:aws:s3:::${var.s3-terraform-state-bucket-name}"
+        Effect   = "Allow",
+        Action   = "s3:ListBucket",
+        Resource = "arn:aws:s3:::${var.s3_terraform_state_bucket_name}"
       }
-  )
-
-}
+    ]
+})
 
 // Policy for DevOps User 
 resource "aws_iam_user_policy" "user_permissions" {

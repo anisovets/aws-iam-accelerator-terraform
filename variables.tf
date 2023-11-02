@@ -4,7 +4,7 @@ variable "region" {
     default = "us-east-1"
 }
 
-variable "s3-terraform-state-bucket-name" {
+variable "s3_terraform_state_bucket_name" {
     description = "S3 bucket for storing the Terraform state"
     type = string
     default = "yaru-labs-terraform-state-bucket"
