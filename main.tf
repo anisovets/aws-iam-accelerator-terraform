@@ -21,8 +21,23 @@ resource "aws_iam_user" "infra_provisioning_user" {
     }
 }
 
+//DevOps IAM User
+resource "aws_iam_user" "app_user" {
+    name = "app_user"
+    path = "/users/"
+
+        lifecycle {
+        ignore_changes = [name]
+    }
+}
+
 resource "aws_iam_access_key" "user_access_key" {
     user = aws_iam_user.infra_provisioning_user.name
+}
+
+resource "aws_iam_user_policy_attachment" "app_user_permissions" {
+  user = aws_iam_user.app_user
+  policy_arn = aws_iam_user.app_user
 }
 
 //Terraform Backend Access Policy
