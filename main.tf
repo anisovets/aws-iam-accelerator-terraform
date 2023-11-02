@@ -29,7 +29,7 @@ resource "aws_iam_policy" "terraform_backend_access_policy" {
   name = "terraform_backend_access_policy"
   description = ""
 
-  policy = jsondecode(
+  policy = jsonencode(
     {
         Effect =  "Allow",
         Action = [
