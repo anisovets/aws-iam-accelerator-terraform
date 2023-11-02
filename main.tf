@@ -37,7 +37,7 @@ resource "aws_iam_access_key" "user_access_key" {
 
 resource "aws_iam_user_policy_attachment" "app_user_permissions" {
   user = aws_iam_user.app_user.name
-  policy_arn = "aws_iam_policy.terraform_backend_access.arn"
+  policy_arn = aws_iam_policy.terraform_backend_access_policy.arn
 }
 
 //Terraform Backend Access Policy
